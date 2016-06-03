@@ -18,11 +18,8 @@ function hide(file)
             repList[#repList + 1] = {pad, name}
             parse[pad] = true
         end
-        local function adderThing(n, sum)
-            if n < 0 then
-                return sum
-            else
-                return adderThing(n - 1, sum + n)
-            end
-        end
-        for i = 1, adderThing(repList)
+        for i = 1, #repList - 1 do
+            
+            
+            
+            
