@@ -1,14 +1,33 @@
 local nDir = ...
 
-local function appendPadding(path, nPadding)
+--[[local function appendPadding(path, nPadding)
     local name = fs.getName(path)
     local dir = path:sub(1, -2 - #name)
     return dir .. ("~"):rep(nPadding) .. name
-end
+end]]--
+
+local function filterPath(p)
+    for v in p:gfind("[^/]*") do
+        
 
 local function filterInput(filterArgList, funct)
     return function(...)
-        local 
+        for _, i in ipairs(filterArgList) do
+            if type(args[i]) == "string" then args[i] = fs.combine(nDir, filterPath(args[i]) end
+        end
+        local d = {pcall(function funct(...) end)}
+        if not d[1] then error(d[2], 0) end
+        table.remove(d, 1)
+        return table.unpack(d)
+    end
+end
+
+local function filterInputs(filterArgList, ...)
+    local t = {}
+    for k, v in ipairs(args) do
+        t[k] = filterInput(filterArgList, v)
+    end
+end
 
 --[[function hide(file)
     
